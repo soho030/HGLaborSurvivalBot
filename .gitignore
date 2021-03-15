@@ -25,6 +25,7 @@ hs_err_pid*
 
 # compile files
 .gradle
+build
 
 # token
 config
