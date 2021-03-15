@@ -1,5 +1,6 @@
 package de.hglabor
 
+import com.gitlab.kordlib.kordx.emoji.Emojis
 import de.hglabor.command.CommandManager
 import de.hglabor.config.ConfigManager
 import dev.kord.common.annotation.KordPreview
@@ -32,7 +33,7 @@ object Manager {
         client.on<ReadyEvent> {
             client.guilds.collect {
                 if(it.systemChannel != null) {
-                    it.systemChannel!!.createMessage("Bot started successfully")
+                    it.systemChannel!!.createMessage("Bot got connected to this guild.")
                 }
             }
         }
@@ -44,7 +45,7 @@ object Manager {
             }
         }
         client.on<GuildCreateEvent> {
-            print("Connected to guild ${this.guild.name}")
+            println("Connected to guild ${this.guild.name}")
         }
         client.login()
     }
