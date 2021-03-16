@@ -1,7 +1,10 @@
 package de.hglabor.command.commands.doc
 
-data class DocEntry (
+abstract class DocEntry (
     val name: String,
     val text: String,
+    val description: String,
+    val image: String,
+    val author: String,
     val keywords: ArrayList<String>
 )
