@@ -30,20 +30,6 @@ object Manager {
             ConfigManager.discordApplication.token
                 ?: error("No token provided"))
         CommandManager.init()
-        client.on<ReadyEvent> {
-            client.guilds.collect {
-                if(it.systemChannel != null) {
-                    it.systemChannel!!.createMessage("Bot got connected to this guild.")
-                }
-            }
-        }
-        client.on<DisconnectEvent> {
-            client.guilds.collect {
-                if(it.systemChannel != null) {
-                    it.systemChannel!!.createMessage("Bot got disconnected from this guild.")
-                }
-            }
-        }
         client.on<GuildCreateEvent> {
             println("Connected to guild ${this.guild.name}")
         }
