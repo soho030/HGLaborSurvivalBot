@@ -1,4 +1,5 @@
-# HGLaborSurvivalBot   ![Icon](https://cdn.discordapp.com/attachments/804656969281175602/821312606383898644/testers.png)
+![Icon](https://cdn.discordapp.com/attachments/804656969281175602/821312606383898644/testers.png)
+# HGLaborSurvivalBot   
 
  Discord bot for the HGLaborSurvival gamemode.
  
