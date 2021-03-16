@@ -2,6 +2,7 @@ package de.hglabor.command
 
 import de.hglabor.Manager
 import de.hglabor.command.commands.HelpCommand
+import de.hglabor.command.commands.doc.DocCommand
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.createApplicationCommand
 import dev.kord.core.entity.Guild
@@ -21,6 +22,7 @@ object CommandManager {
 
     suspend fun init() {
         HelpCommand
+        DocCommand
         cleanupGuilds()
         Manager.client.guilds.collect {
             println("Registering commands for ${it.name}")
