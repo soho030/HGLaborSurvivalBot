@@ -16,7 +16,7 @@ object ContributeCommand : SlashCommand(
         interaction.acknowledge().followUp {
             embed {
                 title = "GitHub Repository"
-                description = "Klicke [GitHub]Hier(https://github.com/mooziii/HGLaborSurvivalBot) um zur GitHub Repository des Bot zu gelangen."
+                description = "Klicke [hier](https://github.com/mooziii/HGLaborSurvivalBot) um zur GitHub Repository des Bot zu gelangen."
                 val thumb = EmbedBuilder.Thumbnail()
                 thumb.url = interaction.kord.getSelf().avatar.url
                 thumbnail = thumb
