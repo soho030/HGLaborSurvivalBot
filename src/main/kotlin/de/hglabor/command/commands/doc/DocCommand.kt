@@ -1,6 +1,7 @@
 package de.hglabor.command.commands.doc
 
 import de.hglabor.command.SlashCommand
+import de.hglabor.command.commands.doc.entries.HeadEntry
 import de.hglabor.command.commands.doc.entries.SpawnEntry
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
@@ -9,7 +10,7 @@ import dev.kord.core.entity.interaction.Interaction
 import dev.kord.core.entity.interaction.string
 import dev.kord.rest.builder.message.EmbedBuilder
 
-val docEntries = listOf<DocEntry>(SpawnEntry)
+val docEntries = listOf<DocEntry>(SpawnEntry, HeadEntry)
 
 @KordPreview
 object DocCommand : SlashCommand(
@@ -17,7 +18,7 @@ object DocCommand : SlashCommand(
     "Show information about everything in the game.",
     {
         subCommand("read", "Zeigt Informationen über bestimmte Dinge") {
-            string("entry", "Der Dokumentationseintrag der angezeigt werden soll") {
+            string("entry", "Der Dokumentationseintrag, der angezeigt werden soll") {
                 required = true
                 for (it in docEntries)
                     choice(it.name, it.name)
