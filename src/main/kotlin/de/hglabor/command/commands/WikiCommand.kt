@@ -21,18 +21,21 @@ object WikiCommand : SlashCommand(
     }
 ) {
     override suspend fun handleCommand(interaction: Interaction) {
-        interaction.acknowledge().followUp {
-            embed {
-                title = "Wiki"
-                description = "Klicke [hier](https://minecraft.gamepedia.com/${interaction.command.options["message"]?.string()?.toLowerCase()}) um zur Wikipage zu gelangen."
-                val thumb = EmbedBuilder.Thumbnail()
-                thumb.url = interaction.kord.getSelf().avatar.url
-                thumbnail = thumb
-                val foot = EmbedBuilder.Footer()
-                foot.icon = interaction.kord.getSelf().avatar.url
-                foot.text = "HGLaborSurvival Bot"
-                footer = foot
-                color = Color(0, 251, 255)
+        val entry = interaction.command.options["keyword"]?.string()
+        if (entry != null) {
+            interaction.acknowledge().followUp {
+                embed {
+                    title = "Wiki"
+                    description = "Klicke [hier](https://minecraft.gamepedia.com/${entry.toLowerCase()}) um zur Wikipage zu gelangen."
+                    val thumb = EmbedBuilder.Thumbnail()
+                    thumb.url = interaction.kord.getSelf().avatar.url
+                    thumbnail = thumb
+                    val foot = EmbedBuilder.Footer()
+                    foot.icon = interaction.kord.getSelf().avatar.url
+                    foot.text = "HGLaborSurvival Bot"
+                    footer = foot
+                    color = Color(0, 251, 255)
+                }
             }
         }
     }
