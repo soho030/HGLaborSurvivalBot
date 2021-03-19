@@ -16,17 +16,20 @@ object WikiCommand : SlashCommand(
     "Mit diesem Command kannst du das Minecraft Wiki durchsuchen.",
     {
         subCommand("search", "Durchsuche das MineCraft Wiki") {
-            string("keyword", "Das keyword nachdem du suchen möchtest")
+            string("keyword", "Das keyword, nachdem du suchen möchtest")
+        }
+        subCommand("read", "Lese einen Eintrag aus dem MineCraft Wiki") {
+            string("entry", "Der Eintrag, den du lesen möchtest.")
         }
     }
 ) {
     override suspend fun handleCommand(interaction: Interaction) {
-        val entry = interaction.command.options["keyword"]?.string()
+        var entry = interaction.command.options["entry"]?.string()
         if (entry != null) {
             interaction.acknowledge().followUp {
                 embed {
-                    title = "Wikisearch - $entry"
-                    description = "Klicke [hier](https://minecraft.gamepedia.com/${entry.toLowerCase()}) um zur Wikipage zu gelangen."
+                    title = "Wikieintrag - $entry"
+                    description = "Klicke [hier](https://minecraft.gamepedia.com/${entry!!.toLowerCase()}) um zur Wikipage zu gelangen."
                     val thumb = EmbedBuilder.Thumbnail()
                     thumb.url = interaction.kord.getSelf().avatar.url
                     thumbnail = thumb
@@ -35,6 +38,24 @@ object WikiCommand : SlashCommand(
                     foot.text = "HGLaborSurvival Bot"
                     footer = foot
                     color = Color(0, 251, 255)
+                }
+            }
+        } else {
+            entry = interaction.command.options["keyword"]?.string()
+            if (entry != null) {
+                interaction.acknowledge().followUp {
+                    embed {
+                        title = "Wikisearch - $entry"
+                        description = "Klicke [hier](https://minecraft.gamepedia.com/Special:Search?search=${entry.toLowerCase()}&go=Go) um zur Wikisuche zu gelangen."
+                        val thumb = EmbedBuilder.Thumbnail()
+                        thumb.url = interaction.kord.getSelf().avatar.url
+                        thumbnail = thumb
+                        val foot = EmbedBuilder.Footer()
+                        foot.icon = interaction.kord.getSelf().avatar.url
+                        foot.text = "HGLaborSurvival Bot"
+                        footer = foot
+                        color = Color(0, 251, 255)
+                    }
                 }
             }
         }
