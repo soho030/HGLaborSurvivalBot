@@ -25,7 +25,7 @@ object WikiCommand : SlashCommand(
         if (entry != null) {
             interaction.acknowledge().followUp {
                 embed {
-                    title = "Wiki"
+                    title = "Wikisearch - $entry"
                     description = "Klicke [hier](https://minecraft.gamepedia.com/${entry.toLowerCase()}) um zur Wikipage zu gelangen."
                     val thumb = EmbedBuilder.Thumbnail()
                     thumb.url = interaction.kord.getSelf().avatar.url
