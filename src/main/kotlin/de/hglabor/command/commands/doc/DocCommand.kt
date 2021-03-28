@@ -1,10 +1,7 @@
 package de.hglabor.command.commands.doc
 
 import de.hglabor.command.SlashCommand
-import de.hglabor.command.commands.doc.entries.HeadEntry
-import de.hglabor.command.commands.doc.entries.LootableBodiesEntry
-import de.hglabor.command.commands.doc.entries.RulesEntry
-import de.hglabor.command.commands.doc.entries.SpawnEntry
+import de.hglabor.command.commands.doc.entries.*
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.followUp
@@ -12,7 +9,7 @@ import dev.kord.core.entity.interaction.Interaction
 import dev.kord.core.entity.interaction.string
 import dev.kord.rest.builder.message.EmbedBuilder
 
-val docEntries = listOf<DocEntry>(SpawnEntry, HeadEntry, RulesEntry, LootableBodiesEntry)
+val docEntries = listOf<DocEntry>(SpawnEntry, HeadEntry, RulesEntry, LootableBodiesEntry, GravestoneEntry, ColorCommandEntry, CombatLogEntry, ChatEntry)
 
 @KordPreview
 object DocCommand : SlashCommand(
